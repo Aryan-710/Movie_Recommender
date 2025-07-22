@@ -36,14 +36,9 @@ st.header('🎬 Movie Recommender System')
 movie_dict_path = os.path.join(os.path.dirname(__file__), 'movie_dict.pkl')
 similarity_path = os.path.join(os.path.dirname(__file__), 'similarity.pkl')
 
-import gzip
-
-with gzip.open(movie_dict_path + ".gz", 'rb') as f:
-    movie_dict = pickle.load(f)
-
-with gzip.open(similarity_path + ".gz", 'rb') as f:
-    similarity = pickle.load(f)
-
+movie_dict = pickle.load(open(movie_dict_path, 'rb'))
+movies = pd.DataFrame(movie_dict)
+similarity = pickle.load(open(similarity_path, 'rb'))
 
 # User input
 selected_movie = st.selectbox(
@@ -59,14 +54,3 @@ if st.button('Show Recommendation'):
         with cols[i]:
             st.text(names[i])
             st.image(posters[i])
-
-import pickle, gzip
-
-# Compress movie_dict.pkl
-with open("movie_dict.pkl", "rb") as f_in, gzip.open("movie_dict.pkl.gz", "wb") as f_out:
-    pickle.dump(pickle.load(f_in), f_out, protocol=pickle.HIGHEST_PROTOCOL)
-
-# Compress similarity.pkl
-with open("similarity.pkl", "rb") as f_in, gzip.open("similarity.pkl.gz", "wb") as f_out:
-    pickle.dump(pickle.load(f_in), f_out, protocol=pickle.HIGHEST_PROTOCOL)
-

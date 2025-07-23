@@ -10,14 +10,19 @@ Streamlit Link: https://movierecommender-enp59kinfc3fw7x2emnrwq.streamlit.app
 
 ## Features
 
-- 🔍 **Content-Based Filtering** using movie metadata
-- 📊 Utilizes cosine similarity on textual features
-- 🎥 Input a movie title and get similar movies in return
-- 🛠️ Built with Python and Pandas
-- 💡 Simple and beginner-friendly implementation
+-  **Content-Based Filtering** using movie metadata
+-  Utilizes cosine similarity on textual features
+-  Input a movie title and get similar movies in return
+-  Built with Python and Pandas
+-  Simple and beginner-friendly implementation
 
 ---
 
-## 📁 Folder Structure
+## Folder Structure
+
+movie_recommender/
+├── app.py                ← Your main Streamlit app
+├── requirements.txt      ← Dependency list for Streamlit/Cloud
+├── movie_dict.pkl        ← Movie metadata (must be local or remote)
 
 

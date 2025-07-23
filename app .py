@@ -2,9 +2,9 @@ import pickle
 import streamlit as st
 import pandas as pd
 import requests
-import gdown  # ✅ Handles Google Drive download reliably
+import gdown  
 
-# -------- Load similarity.pkl from Google Drive --------
+#Load similarity.pkl from Google Drive
 @st.cache_resource
 def load_similarity():
     file_id = "1HfW0uuJsD7wdkUDADqZ0LUHBDsAbFtMl"
@@ -15,14 +15,14 @@ def load_similarity():
         similarity = pickle.load(f)
     return similarity
 
-# -------- Load movie_dict.pkl (must be in same folder) --------
+#Load movie_dict.pkl
 @st.cache_data
 def load_movies():
     with open("movie_dict.pkl", "rb") as f:
         movie_dict = pickle.load(f)
     return pd.DataFrame(movie_dict)
 
-# -------- Fetch poster using TMDB API --------
+#Fetch poster using TMDB API
 def fetch_poster(movie_id):
     url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key=8265bd1679663a7ea12ac168da84d2e8&language=en-US"
     response = requests.get(url)
@@ -35,7 +35,7 @@ def fetch_poster(movie_id):
     else:
         return "https://via.placeholder.com/300x450.png?text=No+Image"
 
-# -------- Recommendation logic --------
+#Recommendation
 def recommend(movie):
     index = movies[movies['title'] == movie].index[0]
     distances = sorted(enumerate(similarity[index]), reverse=True, key=lambda x: x[1])
@@ -47,18 +47,18 @@ def recommend(movie):
         recommended_movie_posters.append(fetch_poster(movie_id))
     return recommended_movie_names, recommended_movie_posters
 
-# -------- Streamlit UI --------
+#Streamlit UI
 st.set_page_config(page_title="🎬 Movie Recommender", layout="wide")
 st.title("🎬 Movie Recommendation System")
 
-# Load data
+#Load data
 movies = load_movies()
 similarity = load_similarity()
 
-# Movie selector
+#Movie selector
 selected_movie = st.selectbox("Search or select a movie:", movies['title'].values)
 
-# Show recommendations
+#Show recommendations
 if st.button("Show Recommendation"):
     names, posters = recommend(selected_movie)
     cols = st.columns(5)

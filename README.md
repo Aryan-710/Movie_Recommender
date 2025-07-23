@@ -21,8 +21,11 @@ Streamlit Link: https://movierecommender-enp59kinfc3fw7x2emnrwq.streamlit.app
 ## Folder Structure
 
 movie_recommender/
+
 ├── app.py                ← Your main Streamlit app
+
 ├── requirements.txt      ← Dependency list for Streamlit/Cloud
+
 ├── movie_dict.pkl        ← Movie metadata (must be local or remote)
 
 

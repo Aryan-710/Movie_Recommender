@@ -49,7 +49,7 @@ def recommend(movie):
 
 # -------- Streamlit UI --------
 st.set_page_config(page_title="🎬 Movie Recommender", layout="wide")
-st.title("🎬 Movie Recommender System")
+st.title("🎬 Movie Recommendation System")
 
 # Load data
 movies = load_movies()

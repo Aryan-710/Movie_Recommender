@@ -2,16 +2,11 @@ import pickle
 import streamlit as st
 import pandas as pd
 import requests
-import gdown  
 
-#Load similarity.pkl from Google Drive
+#Load similarity.pkl locally
 @st.cache_resource
 def load_similarity():
-    file_id = "1HfW0uuJsD7wdkUDADqZ0LUHBDsAbFtMl"
-    url = f"https://drive.google.com/uc?export=download&id={file_id}"
-    output = "similarity.pkl"
-    gdown.download(url, output, quiet=False)
-    with open(output, "rb") as f:
+    with open("similarity.pkl", "rb") as f:
         similarity = pickle.load(f)
     return similarity
 

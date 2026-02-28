@@ -2,7 +2,7 @@
 
 A content-based movie recommendation engine that suggests similar movies based on metadata like genres, keywords, cast, crew, and overview. Input any movie title and get 5 similar recommendations instantly - with posters fetched live from TMDB.
 
-🚀 **Live App:** [Click here](https://movierecommendationsystem-di8t6nl6gjg6x2ptxamvb5.streamlit.app/)
+🚀 **Live App:** [Click here](https://movierecommender-i3gjllqsjfz6kpggsezj3g.streamlit.app/)
 
 ---
 
